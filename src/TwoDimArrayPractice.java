@@ -126,8 +126,13 @@ public class TwoDimArrayPractice extends JFrame
     //  where row is the index of the array's current row
     //  and column is the index of the array's current column
     // Write your code here:
-
-
+       for (int i = 0; i < ROWS; i++) {
+           System.out.print(i + "   ");
+           for (int j = 0; j < COLUMNS; j++) {
+               System.out.print(intArray[i][j] + " ");
+           }
+           System.out.println();
+       }
 
 
 
@@ -152,6 +157,10 @@ public class TwoDimArrayPractice extends JFrame
     //  where row is the index of the array's current row
     //  and column is the index of the array's current column
     // Write your code here:
+       for (int i = 0; i < COLUMNS; i++) {
+           intArray[row][i] = value;
+           animate(row, i);
+       }
 
 
 
@@ -173,8 +182,16 @@ public class TwoDimArrayPractice extends JFrame
     //        column is the index of the array's current column
     //        minimum is the local variable storing the current minimum
     // Write your code here:
-
-      return 0; // replace this line with your return statement
+       int minimum = 80;
+       int minimumRow = 0;
+       for (int i = 0; i < ROWS; i++) {
+           if (minimum > intArray[i][column]) {
+               minimum = intArray[i][column];
+               minimumRow = i;
+           }
+       }
+       animate (minimumRow, column, minimum);
+      return minimum; // replace this line with your return statement
    }
    // end of findMinimumn method
 
@@ -186,6 +203,15 @@ public class TwoDimArrayPractice extends JFrame
    */
    public int countFound( int value )
    {
+       int count = 0;
+       for (int i = 0; i < ROWS; i++) {
+           for (int j = 0; j < COLUMNS; j++) {
+               if (intArray[i][j] == value) {
+                   count++;
+                   animate(i, j, value);
+               }
+           }
+       }
     // Note:  To animate the algorithm, put this method call as the
     // last element in your inner for loop
     //    animate( row, column, num );
@@ -194,7 +220,7 @@ public class TwoDimArrayPractice extends JFrame
     //        num is the local variable storing the current frequency count
     // Write your code here:
 
-     return 0; // replace this line with your return statement
+     return count; // replace this line with your return statement
    }
    // end of countFound method
 
